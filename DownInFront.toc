@@ -1,0 +1,11 @@
+## Interface: 80000
+## Title: DownInFront
+## Version: 2.2.2
+## Notes: Hides intrusive parts of the game interface
+## Author: Neph / NephMakes / lieandswell
+## SavedVariablesPerCharacter: DownInFrontOptions
+## DefaultState: enabled
+DownInFront.lua
+OptionsLibrary.lua
+Options.lua
+Localization.lua
