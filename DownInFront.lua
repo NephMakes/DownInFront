@@ -62,24 +62,28 @@ end
 --[[ Hide UI elements ]]--
 
 function DownInFront:HideChatButtons(hideButtons)
-	local friendsButton = QuickJoinToastButton;  -- FrameXML/QuickJoinToast.xml
-	local chatMenuButton = ChatFrameMenuButton;  
-
+	local chatButtons = {
+		QuickJoinToastButton, -- opens social frame, FrameXML/QuickJoinToast.xml
+		ChatFrameMenuButton,
+		ChatFrameChannelButton, 			-- FrameXML/FloatingChatFrame.xml
+		ChatFrameToggleVoiceDeafenButton, 	-- FrameXML/FloatingChatFrame.xml
+		ChatFrameToggleVoiceMuteButton		-- FrameXML/FloatingChatFrame.xml
+	}
 	if ( hideButtons ) then 
-		friendsButton:SetScript("OnShow", friendsButton.Hide);
-		friendsButton:Hide(); 
-		chatMenuButton:SetScript("OnShow", chatMenuButton.Hide);
-		chatMenuButton:Hide(); 
+		for key, button in pairs(chatButtons) do
+			button:SetScript("OnShow", button.Hide);
+			button:Hide(); 
+		end
 		for i=1, NUM_CHAT_WINDOWS do 
 			local buttonFrame = _G["ChatFrame"..i.."ButtonFrame"];
 			buttonFrame:SetScript("OnShow", buttonFrame.Hide);
 			buttonFrame:Hide();
 		end
 	else
-		friendsButton:SetScript("OnShow", nil);
-		friendsButton:Show();  
-		chatMenuButton:SetScript("OnShow", nil);
-		chatMenuButton:Show();  
+		for key, button in pairs(chatButtons) do
+			button:SetScript("OnShow", nil);
+			button:Show(); 
+		end
 		for i=1, NUM_CHAT_WINDOWS do 
 			local buttonFrame = _G["ChatFrame"..i.."ButtonFrame"];
 			buttonFrame:SetScript("OnShow", nil);

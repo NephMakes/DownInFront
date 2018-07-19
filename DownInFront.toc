@@ -1,6 +1,6 @@
 ## Interface: 80000
 ## Title: DownInFront
-## Version: 2.2.2
+## Version: 2.2.3
 ## Notes: Hides intrusive parts of the game interface
 ## Author: Neph / NephMakes / lieandswell
 ## SavedVariablesPerCharacter: DownInFrontOptions

@@ -35,6 +35,33 @@ Localization["enUS"] = {
 	UserInterfaceElements = "User interface elements"
 }
 
+Localization["ruRU"] = {
+	-- Translations by Curse user akinaw. Thanks!  
+    GameWorldText = "Мир игрового мира",
+    HideChatButtons = "Скрыть кнопки чата",
+    HideChatButtonsTooltip = "Скрыть кнопки прокрутки в окне чата",
+    HideChatTabs = "Скрыть вкладки чата",
+    HideChatTabsTooltip = "Сделать вкладки чата полностью прозрачными",
+    HideCombatText = "Скрыть текст боя",
+    HideCombatTextTooltip = "Скрыть текст боя, например, повреждения и исцеляющие числа",
+    -- HideContructionAlerts = "Скрыть оповещения о строительстве и наборе персонала",
+    -- HideContructionAlertsTooltip = "Скрыть оповещения о строительстве гарнизона и оповещения о приеме в зале приема заказов",
+    HideGroupLootWindow = "Скрыть окно лута группы",
+    HideGroupLootWindowTooltip = "Скрыть окно, показывающее награду, полученную членами группы после убийства босса",
+    HideMissionAlerts = "Скрыть предупреждения о миссии",
+    HideMissionAlertsTooltip = "Скрыть предупреждения, которые заказывают миссии зала или гарнизона завершены",
+    HideOrderHallBar = "Скрыть панель верхнего строения холла",
+    HidePlayerTitles = "Скрыть названия игроков",
+    HidePlayerGuilds = "Скрыть гильдии игроков",
+    HidePlayerNameInPvE = "Скрыть имена игроков в экземплярах PvE",
+    HidePlayerNameInPvETooltip = "Автоматически скрывать имена игроков в PvE-экземплярах, таких как подземелья или рейды",
+    HideThreatText = "Скрыть текст угрозы",
+    HideThreatTextTooltip = "Скрыть текст угрозы над такими мобами, как« Нападение на вас 'и' 'Высокая угроза'",
+    ReloadAlert = "Некоторые из ваших настроек не вступят в силу, пока вы не перезагрузите пользовательский интерфейс.",
+    Subtext = "Эти опции позволяют скрыть навязчивые части игрового интерфейса.",
+    UserInterfaceElements = "Элементы пользовательского интерфейса"
+}
+
 --[[
 Localization["deDE"] = {}; 
 Localization["esES"] = {}; 
@@ -43,7 +70,6 @@ Localization["frFR"] = {};
 Localization["itIT"] = {}; 
 Localization["koKR"] = {}; 
 Localization["ptBR"] = {}; 
-Localization["ruRU"] = {}; 
 Localization["zhCN"] = {}; 
 Localization["zhTW"] = {}; 
 --]]
