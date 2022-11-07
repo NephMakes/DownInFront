@@ -1,6 +1,6 @@
-## Interface: 80300
+## Interface: 90207
 ## Title: DownInFront
-## Version: 2.2.4
+## Version: 2.3.0
 ## Notes: Hides intrusive parts of the game interface
 ## Author: Neph / NephMakes / lieandswell
 ## SavedVariablesPerCharacter: DownInFrontOptions

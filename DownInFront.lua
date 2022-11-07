@@ -6,56 +6,60 @@ local EventFrame = CreateFrame("Frame", "DownInFrontFrame", UIParent);
 --[[ Base functions ]]--
 
 function EventFrame:OnEvent(event, ...) 
-	if ( event == "PLAYER_ENTERING_WORLD" ) then 
-		DownInFront:Update(); 
-	elseif ( event == "VARIABLES_LOADED" ) then
+	if event == "PLAYER_ENTERING_WORLD" then 
+		DownInFront:Update()
+	elseif event == "VARIABLES_LOADED" then
 		DownInFront.cvarsLoaded = true;
-		DownInFront:StoreNameCVars();
-	elseif ( event == "ADDON_LOADED" ) then 
-		local arg1 = ...;
-		if ( arg1 == addonName ) then
-			DownInFront:OnAddonLoaded();
-		elseif ( arg1 == "Blizzard_OrderHallUI" ) then
-			DownInFront:HideOrderHallBar(DownInFrontOptions.HideOrderHallBar);
+		DownInFront:StoreNameCVars()
+	elseif event == "ADDON_LOADED" then 
+		local arg1 = ...
+		if arg1 == addonName then
+			DownInFront:OnAddonLoaded()
+		elseif arg1 == "Blizzard_OrderHallUI" then
+			DownInFront:HideOrderHallBar(DownInFrontOptions.HideOrderHallBar)
 		end
-	elseif ( event == "CVAR_UPDATE" ) then 
-		DownInFront:StoreNameCVars();
-	elseif ( event == "PLAYER_LOGOUT" ) then
-		DownInFront:RevertNameCVars();
+	elseif event == "CVAR_UPDATE" then 
+		DownInFront:StoreNameCVars()
+	elseif event == "PLAYER_LOGOUT" then
+		DownInFront:RevertNameCVars()
 	end
 end
-EventFrame:SetScript("OnEvent", EventFrame.OnEvent);
-EventFrame:RegisterEvent("VARIABLES_LOADED");
-EventFrame:RegisterEvent("ADDON_LOADED");
-EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD");
-EventFrame:RegisterEvent("CVAR_UPDATE");
-EventFrame:RegisterEvent("PLAYER_LOGOUT");
+EventFrame:SetScript("OnEvent", EventFrame.OnEvent)
+EventFrame:RegisterEvent("VARIABLES_LOADED")
+EventFrame:RegisterEvent("ADDON_LOADED")
+EventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+EventFrame:RegisterEvent("CVAR_UPDATE")
+EventFrame:RegisterEvent("PLAYER_LOGOUT")
 
 function DownInFront:OnAddonLoaded()
-	local reset = false;
+	local reset = false
 	if (DownInFrontOptions) and (DownInFrontOptions.Version) and (DownInFrontOptions.Version < "2.2") then 
-		reset = true;
+		reset = true
 	end
-	self:UpdateOptions("DownInFrontOptions", self.Defaults, reset); 
-	self:LocalizeStrings();
+	self:UpdateOptions("DownInFrontOptions", self.Defaults, reset)
+	self:LocalizeStrings()
 end
 
 function DownInFront:Update()
-	local options = DownInFrontOptions;
+	local options = DownInFrontOptions
 
 	-- UI elements
-	self:HideChatButtons(options.HideChatButtons);
-	self:HideChatTabs(options.HideChatTabs);
-	self:HideGroupLoot(options.HideGroupLoot);
-	self:HideMissionAlerts(options.HideMissionAlerts);
-	self:HideOrderHallBar(options.HideOrderHallBar);
+	self:HideChatButtons(options.HideChatButtons)
+	self:HideChatTabs(options.HideChatTabs)
 
 	-- Game-world text
-	self:HidePlayerNamesInPVE(options.HidePlayerNamesInPVE);
-	self:HidePlayerTitles(options.HidePlayerTitles);
-	self:HidePlayerGuilds(options.HidePlayerGuilds);
-	self:HideCombatText(options.HideCombatText);
-	self:HideThreatText(options.HideThreatText);
+	self:HidePlayerNamesInPVE(options.HidePlayerNamesInPVE)
+	self:HidePlayerTitles(options.HidePlayerTitles)
+	self:HidePlayerGuilds(options.HidePlayerGuilds)
+	self:HideCombatText(options.HideCombatText)
+	self:HideThreatText(options.HideThreatText)
+
+	-- Retail-only features
+	if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then  -- Blizz globals in FrameXML/Constants.lua
+		self:HideGroupLoot(options.HideGroupLoot)
+		self:HideMissionAlerts(options.HideMissionAlerts)
+		self:HideOrderHallBar(options.HideOrderHallBar)
+	end
 end
 
 
@@ -102,9 +106,10 @@ function DownInFront:HideChatTabs(hideTabs)
 		for i=1, NUM_CHAT_WINDOWS do 
 			_G["ChatFrame"..i.."Tab"]:SetAlpha(0);
 			_G["ChatFrame"..i.."Tab"].noMouseAlpha = 0;
-			_G["ChatFrame"..i.."EditBoxFocusLeft"]:SetAlpha(0);
-			_G["ChatFrame"..i.."EditBoxFocusMid"]:SetAlpha(0);
-			_G["ChatFrame"..i.."EditBoxFocusRight"]:SetAlpha(0);
+			-- _G["ChatFrame"..i.."EditBoxFocusLeft"]:SetAlpha(0);
+			-- _G["ChatFrame"..i.."EditBoxFocusMid"]:SetAlpha(0);
+			-- _G["ChatFrame"..i.."EditBoxFocusRight"]:SetAlpha(0);
+			-- Commented out in Classic WoW code
 			_G["ChatFrame"..i.."EditBoxLeft"]:SetAlpha(0);
 			_G["ChatFrame"..i.."EditBoxMid"]:SetAlpha(0); 
 			_G["ChatFrame"..i.."EditBoxRight"]:SetAlpha(0); 
@@ -118,9 +123,10 @@ function DownInFront:HideChatTabs(hideTabs)
 		for i=1, NUM_CHAT_WINDOWS do 
 			_G["ChatFrame"..i.."Tab"]:SetAlpha(0.2);
 			_G["ChatFrame"..i.."Tab"].noMouseAlpha = 0.2;
-			_G["ChatFrame"..i.."EditBoxFocusLeft"]:SetAlpha(1);
-			_G["ChatFrame"..i.."EditBoxFocusMid"]:SetAlpha(1);
-			_G["ChatFrame"..i.."EditBoxFocusRight"]:SetAlpha(1);
+			-- _G["ChatFrame"..i.."EditBoxFocusLeft"]:SetAlpha(1);
+			-- _G["ChatFrame"..i.."EditBoxFocusMid"]:SetAlpha(1);
+			-- _G["ChatFrame"..i.."EditBoxFocusRight"]:SetAlpha(1);
+			-- Commented out in Classic WoW code
 			_G["ChatFrame"..i.."EditBoxLeft"]:SetAlpha(1);
 			_G["ChatFrame"..i.."EditBoxMid"]:SetAlpha(1); 
 			_G["ChatFrame"..i.."EditBoxRight"]:SetAlpha(1); 
@@ -130,10 +136,12 @@ function DownInFront:HideChatTabs(hideTabs)
 end
 
 function DownInFront:HideGroupLoot(hideLoot)
-	if ( hideLoot ) then 
-		BossBanner:UnregisterEvent("ENCOUNTER_LOOT_RECEIVED");
-	else
-		BossBanner:RegisterEvent("ENCOUNTER_LOOT_RECEIVED");
+	if BossBanner then  -- Doesn't exist in Classic
+		if hideLoot then 
+			BossBanner:UnregisterEvent("ENCOUNTER_LOOT_RECEIVED")
+		else
+			BossBanner:RegisterEvent("ENCOUNTER_LOOT_RECEIVED")
+		end
 	end
 end
 
