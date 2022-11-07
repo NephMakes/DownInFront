@@ -6,14 +6,14 @@ local addonName, DownInFront = ...
 DownInFront.Defaults = {
 	HideChatButtons = true,
 	HideChatTabs = true,
-	HideCombatText = true,
+	-- HideCombatText = true,
 	-- HideConstructionAlerts = true,
 	HideGroupLoot = true,
 	HideMissionAlerts = true,
 	HideOrderHallBar = true,
 	HidePlayerNamesInPVE = true,
-	HidePlayerTitles = true,
-	HidePlayerGuilds = true,
+	-- HidePlayerTitles = true,
+	-- HidePlayerGuilds = true,
 	HideThreatText = true,
 	Version = GetAddOnMetadata(addonName, "Version"),
 };
