@@ -101,10 +101,10 @@ function DownInFront:SetAllTheText()
 	optionsPanel.gameWorldText:SetText(strings.GameWorldText);
 	optionsPanel.HidePlayerNamesInPVE.Text:SetText(strings.HidePlayerNameInPvE);
 	optionsPanel.HidePlayerNamesInPVE.tooltipText = strings.HidePlayerNameInPvETooltip;
-	optionsPanel.hidePlayerTitles.Text:SetText(strings.HidePlayerTitles);
-	optionsPanel.hidePlayerGuilds.Text:SetText(strings.HidePlayerGuilds);
-	optionsPanel.hideCombatText.Text:SetText(strings.HideCombatText);
-	optionsPanel.hideCombatText.tooltipText = strings.HideCombatTextTooltip;
+	-- optionsPanel.hidePlayerTitles.Text:SetText(strings.HidePlayerTitles);
+	-- optionsPanel.hidePlayerGuilds.Text:SetText(strings.HidePlayerGuilds);
+	-- optionsPanel.hideCombatText.Text:SetText(strings.HideCombatText);
+	-- optionsPanel.hideCombatText.tooltipText = strings.HideCombatTextTooltip;
 	optionsPanel.hideThreatText.Text:SetText(strings.HideThreatText);
 	optionsPanel.hideThreatText.tooltipText = strings.HideThreatTextTooltip;
 end

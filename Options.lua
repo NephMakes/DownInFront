@@ -81,6 +81,9 @@ panel.HidePlayerNamesInPVE.onValueChanged = function(hideNames)
 	DownInFront:HidePlayerNamesInPVE(hideNames); 
 end
 
+--[[
+-- Now part of base UI
+
 panel.hidePlayerTitles = panel:CreateCheckButton("HidePlayerTitles");
 panel.hidePlayerTitles:SetPoint("TOPLEFT", panel.HidePlayerNamesInPVE, "BOTTOMLEFT", 0, -6);
 panel.hidePlayerTitles.onValueChanged = function(hideTitles) 
@@ -98,9 +101,11 @@ panel.hideCombatText:SetPoint("LEFT", panel.HidePlayerNamesInPVE, "LEFT", 280, 0
 panel.hideCombatText.onValueChanged = function(hideText) 
 	DownInFront:HideCombatText(hideText); 
 end
+]]--
 
 panel.hideThreatText = panel:CreateCheckButton("HideThreatText");
-panel.hideThreatText:SetPoint("TOPLEFT", panel.hideCombatText, "BOTTOMLEFT", 0, -6);
+-- panel.hideThreatText:SetPoint("TOPLEFT", panel.hideCombatText, "BOTTOMLEFT", 0, -6);
+panel.hideThreatText:SetPoint("LEFT", panel.HidePlayerNamesInPVE, "LEFT", 280, 0);
 panel.hideThreatText.onValueChanged = function(hideText) 
 	DownInFront:HideThreatText(hideText);
 end

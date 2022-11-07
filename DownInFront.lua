@@ -1,6 +1,6 @@
 local addonName, DownInFront = ...
 
-local EventFrame = CreateFrame("Frame", "DownInFrontFrame", UIParent); 
+local EventFrame = CreateFrame("Frame", "DownInFrontFrame", UIParent)
 
 
 --[[ Base functions ]]--
@@ -49,9 +49,9 @@ function DownInFront:Update()
 
 	-- Game-world text
 	self:HidePlayerNamesInPVE(options.HidePlayerNamesInPVE)
-	self:HidePlayerTitles(options.HidePlayerTitles)
-	self:HidePlayerGuilds(options.HidePlayerGuilds)
-	self:HideCombatText(options.HideCombatText)
+	-- self:HidePlayerTitles(options.HidePlayerTitles)  -- Now in base UI
+	-- self:HidePlayerGuilds(options.HidePlayerGuilds)  -- Now in base UI
+	-- self:HideCombatText(options.HideCombatText)  -- Now in base UI
 	self:HideThreatText(options.HideThreatText)
 
 	-- Retail-only features
@@ -146,7 +146,7 @@ function DownInFront:HideGroupLoot(hideLoot)
 end
 
 function DownInFront:HideMissionAlerts(hideAlerts)
-	if ( hideAlerts ) then 
+	if hideAlerts then 
 		AlertFrame:UnregisterEvent("GARRISON_MISSION_FINISHED");
 	else
 		AlertFrame:RegisterEvent("GARRISON_MISSION_FINISHED");
@@ -154,16 +154,16 @@ function DownInFront:HideMissionAlerts(hideAlerts)
 end
 
 function DownInFront:HideOrderHallBar(hideBar)
-	local topBar = OrderHallCommandBar;
+	local topBar = OrderHallCommandBar
 	if ( topBar ) then  -- Only exists if Blizzard_OrderHallUI is loaded
 		if ( hideBar ) then 
-			topBar:Hide();
-			topBar:SetScript("OnShow", topBar.Hide);
-			UIParent:UnregisterEvent("UNIT_AURA");
+			topBar:Hide()
+			topBar:SetScript("OnShow", topBar.Hide)
+			UIParent:UnregisterEvent("UNIT_AURA")
 		else
-			topBar:SetScript("OnShow", OrderHallCommandBarMixin.OnShow);
-			topBar:SetShown(C_Garrison.IsPlayerInGarrison(LE_GARRISON_TYPE_7_0));
-			UIParent:RegisterEvent("UNIT_AURA"); 
+			topBar:SetScript("OnShow", OrderHallCommandBarMixin.OnShow)
+			topBar:SetShown(C_Garrison.IsPlayerInGarrison(LE_GARRISON_TYPE_7_0))
+			UIParent:RegisterEvent("UNIT_AURA")
 		end
 	end
 end
