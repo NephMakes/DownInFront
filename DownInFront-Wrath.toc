@@ -1,7 +1,7 @@
-## Interface: 30400
+## Interface: 30401
 ## Title: DownInFront
-## Version: 2.3.0
-## Notes: Hides intrusive parts of the game interface
+## Version: 2.3.1
+## Notes: Hides UI clutter
 ## Author: NephMakes / lieandswell
 ## SavedVariablesPerCharacter: DownInFrontOptions
 ## DefaultState: enabled
