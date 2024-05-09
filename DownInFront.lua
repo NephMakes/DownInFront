@@ -82,6 +82,10 @@ function DownInFront:HideChatButtons(hideButtons)
 			local buttonFrame = _G["ChatFrame"..i.."ButtonFrame"];
 			buttonFrame:SetScript("OnShow", buttonFrame.Hide);
 			buttonFrame:Hide();
+			local minimizeButton = _G["ChatFrame"..i.."MinimizeButton"]
+			if minimizeButton then 
+				minimizeButton:Hide()
+			end
 		end
 	else
 		for key, button in pairs(chatButtons) do

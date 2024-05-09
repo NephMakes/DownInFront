@@ -9,5 +9,4 @@ DownInFront lets you hide intrusive parts of the game interface, including:
 * Threat text above mobs ("Attacking you" and the like)
 * Mission complete alerts
 
-Recent changes: 
-* Now compatible with Classic WoW
+Compatible with retail and classic WoW. 
