@@ -15,8 +15,8 @@ DownInFront.Defaults = {
 	-- HidePlayerTitles = true,
 	-- HidePlayerGuilds = true,
 	HideThreatText = true,
-	Version = GetAddOnMetadata(addonName, "Version"),
-};
+	Version = C_AddOns.GetAddOnMetadata(addonName, "Version"),
+}
 
 
 --[[ Interface options panel ]]-- 
