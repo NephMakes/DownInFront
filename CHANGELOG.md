@@ -2,6 +2,9 @@
 
 ## DownInFront
 
+### v2.3.4 (2025-10-09)
+* Updated version for patches 11.2.5, 5.5.1, 1.15.7
+
 ### v2.3.3 (2024-08-01)
 * Updated Table of Contents for patches 11.0.0, 1.15.3
 * Fixed Lua errors with patch 11.0.0
