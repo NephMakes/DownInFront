@@ -1,7 +1,7 @@
 # Changelog
 ## DownInFront
 
-### v2.3.4 (2025-10-XX)
+### v2.3.5 (2025-10-10)
 * Updated for Retail patch 11.2.5
 * Updated for Mists of Pandaria Classic patch 5.5.1
 * Updated for Vanilla Classic patch 1.15.7
