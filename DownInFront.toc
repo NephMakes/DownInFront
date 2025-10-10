@@ -5,6 +5,8 @@
 ## Author: NephMakes
 ## SavedVariablesPerCharacter: DownInFrontOptions
 ## DefaultState: enabled
+## X-Curse-Project-ID: 23033
+## X-WoWI-ID: 16630
 DownInFront.lua
 OptionsLibrary.lua
 Options.lua
