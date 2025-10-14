@@ -46,7 +46,7 @@ function DownInFront:Update()
 	-- UI elements
 	self:HideChatButtons(options.HideChatButtons)
 	self:HideChatTabs(options.HideChatTabs)
-	self:SimplifyObjectiveTracker(true)
+	self:SimplifyObjectiveTracker(options.SimplifyObjectiveTracker)
 
 	-- Game-world text
 	self:HidePlayerNamesInPVE(options.HidePlayerNamesInPVE)
@@ -203,6 +203,7 @@ function DownInFront:SimplifyObjectiveHeader(header)
 	local newTextColor = TRIVIAL_DIFFICULTY_COLOR
 	header.Background:Hide()
 	header.Text:ClearAllPoints()
+	header.Text:SetWidth(200)
 	header.Text:SetPoint("RIGHT", header.MinimizeButton, "LEFT", -10, 0)
 	header.Text:SetJustifyH("RIGHT")
 	header.Text:SetTextColor(newTextColor.r, newTextColor.g, newTextColor.b)
@@ -212,7 +213,8 @@ function DownInFront:RestoreObjectiveHeader(header)
 	local oldTextColor = NORMAL_FONT_COLOR
 	header.Background:Show()
 	header.Text:ClearAllPoints()
-	header.Text:SetPoint("LEFT", -7, 0)
+	header.Text:SetWidth(208)
+	header.Text:SetPoint("LEFT", header, 7, 0)
 	header.Text:SetJustifyH("LEFT")
 	header.Text:SetTextColor(oldTextColor.r, oldTextColor.g, oldTextColor.b)
 end

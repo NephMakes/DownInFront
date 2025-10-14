@@ -11,11 +11,12 @@ DownInFront.Defaults = {
 	HideGroupLoot = true,
 	HideMissionAlerts = true,
 	HideOrderHallBar = true,
+	SimplifyObjectiveTracker = true,
 	HidePlayerNamesInPVE = true,
 	-- HidePlayerTitles = true,
 	-- HidePlayerGuilds = true,
 	HideThreatText = true,
-	Version = C_AddOns.GetAddOnMetadata(addonName, "Version"),
+	Version = C_AddOns.GetAddOnMetadata(addonName, "Version")
 }
 
 
@@ -68,6 +69,12 @@ end
 
 -- panel.hideConstructionAlerts = panel:CreateCheckButton("HideConstructionAlerts");
 -- panel.hideConstructionAlerts:SetPoint("TOPLEFT", panel.hideMissionAlerts, "BOTTOMLEFT", 0, -6);
+
+panel.simplifyObjectiveTracker = panel:CreateCheckButton("SimplifyObjectiveTracker")
+panel.simplifyObjectiveTracker:SetPoint("TOPLEFT", panel.hideOrderHallBar, "BOTTOMLEFT", 0, -6)
+panel.simplifyObjectiveTracker.onValueChanged = function(simplify)
+	DownInFront:SimplifyObjectiveTracker(simplify)
+end
 
 
 -- Controls for game-world text
