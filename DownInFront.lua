@@ -46,7 +46,7 @@ function DownInFront:Update()
 	-- UI elements
 	self:HideChatButtons(options.HideChatButtons)
 	self:HideChatTabs(options.HideChatTabs)
-	self:HideObjectiveTrackerArt(true)
+	self:SimplifyObjectiveTracker(true)
 
 	-- Game-world text
 	self:HidePlayerNamesInPVE(options.HidePlayerNamesInPVE)
@@ -173,35 +173,52 @@ function DownInFront:HideOrderHallBar(hideBar)
 	end
 end
 
-function DownInFront:HideObjectiveTrackerArt(hideArt)
-	-- wow-ui-source/Interface/AddOns/Blizzard_ObjectiveTracker (as of patch 11.2.5)
-	if hideArt then
-		for container in pairs(ObjectiveTrackerManager.containers) do
-			if container.Header then
-				DownInFront:SimplifyObjectiveTrackerHeader(container.Header)
+
+--[[ Objective Tracker ]]--
+
+-- wow-ui-source/Interface/AddOns/Blizzard_ObjectiveTracker (as of patch 11.2.5)
+
+function DownInFront:SimplifyObjectiveTracker(simplify)
+	for container in pairs(ObjectiveTrackerManager.containers) do
+		if container.Header then
+			if simplify then
+				self:SimplifyObjectiveHeader(container.Header)
+			else
+				self:RestoreObjectiveHeader(container.Header)
 			end
-			for _, module in ipairs(container.modules) do
-				if module.Header then
-					DownInFront:SimplifyObjectiveTrackerHeader(module.Header)
+		end
+		for _, module in ipairs(container.modules) do
+			if module.Header then
+				if simplify then
+					self:SimplifyObjectiveHeader(module.Header)
+				else
+					self:RestoreObjectiveHeader(module.Header)
 				end
 			end
 		end
-	else
 	end
 end
 
-function DownInFront:SimplifyObjectiveTrackerHeader(header)
-	local headerColor = {r = 0.6, g = 0.6, b = 0.6}
+function DownInFront:SimplifyObjectiveHeader(header)
+	local newTextColor = TRIVIAL_DIFFICULTY_COLOR
 	header.Background:Hide()
-	-- header.Background:SetVertexColor(0.5, 0.5, 0.5)
 	header.Text:ClearAllPoints()
 	header.Text:SetPoint("RIGHT", header.MinimizeButton, "LEFT", -10, 0)
 	header.Text:SetJustifyH("RIGHT")
-	header.Text:SetTextColor(headerColor.r, headerColor.g, headerColor.b)
+	header.Text:SetTextColor(newTextColor.r, newTextColor.g, newTextColor.b)
+end
+
+function DownInFront:RestoreObjectiveHeader(header)
+	local oldColor = NORMAL_FONT_COLOR
+	header.Background:Show()
+	header.Text:ClearAllPoints()
+	header.Text:SetPoint("LEFT", -7, 0)
+	header.Text:SetJustifyH("LEFT")
+	header.Text:SetTextColor(oldColor.r, oldColor.g, oldColor.b)
 end
 
 
---[[ Hide game-world text ]]--
+--[[ Game-world text ]]--
 
 function DownInFront:StoreNameCVars()
 	if ( self.cvarsLoaded ) then 
