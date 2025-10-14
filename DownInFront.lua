@@ -6,19 +6,19 @@ local EventFrame = CreateFrame("Frame", "DownInFrontFrame", UIParent)
 --[[ Base functions ]]--
 
 function EventFrame:OnEvent(event, ...) 
-	if event == "PLAYER_ENTERING_WORLD" then 
+	if event == "PLAYER_ENTERING_WORLD" then
 		DownInFront:Update()
 	elseif event == "VARIABLES_LOADED" then
-		DownInFront.cvarsLoaded = true;
+		DownInFront.cvarsLoaded = true
 		DownInFront:StoreNameCVars()
-	elseif event == "ADDON_LOADED" then 
+	elseif event == "ADDON_LOADED" then
 		local arg1 = ...
 		if arg1 == addonName then
 			DownInFront:OnAddonLoaded()
 		elseif arg1 == "Blizzard_OrderHallUI" then
 			DownInFront:HideOrderHallBar(DownInFrontOptions.HideOrderHallBar)
 		end
-	elseif event == "CVAR_UPDATE" then 
+	elseif event == "CVAR_UPDATE" then
 		DownInFront:StoreNameCVars()
 	elseif event == "PLAYER_LOGOUT" then
 		DownInFront:RevertNameCVars()
@@ -50,10 +50,10 @@ function DownInFront:Update()
 
 	-- Game-world text
 	self:HidePlayerNamesInPVE(options.HidePlayerNamesInPVE)
+	self:HideThreatText(options.HideThreatText)
 	-- self:HidePlayerTitles(options.HidePlayerTitles)  -- Now in base UI
 	-- self:HidePlayerGuilds(options.HidePlayerGuilds)  -- Now in base UI
 	-- self:HideCombatText(options.HideCombatText)  -- Now in base UI
-	self:HideThreatText(options.HideThreatText)
 
 	-- Retail-only features
 	if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then  -- Blizz globals in FrameXML/Constants.lua
@@ -74,29 +74,29 @@ function DownInFront:HideChatButtons(hideButtons)
 		ChatFrameToggleVoiceDeafenButton, 	-- FrameXML/FloatingChatFrame.xml
 		ChatFrameToggleVoiceMuteButton		-- FrameXML/FloatingChatFrame.xml
 	}
-	if ( hideButtons ) then 
+	if hideButtons then
 		for key, button in pairs(chatButtons) do
-			button:SetScript("OnShow", button.Hide);
-			button:Hide(); 
+			button:SetScript("OnShow", button.Hide)
+			button:Hide()
 		end
 		for i=1, NUM_CHAT_WINDOWS do 
-			local buttonFrame = _G["ChatFrame"..i.."ButtonFrame"];
-			buttonFrame:SetScript("OnShow", buttonFrame.Hide);
-			buttonFrame:Hide();
+			local buttonFrame = _G["ChatFrame"..i.."ButtonFrame"]
+			buttonFrame:SetScript("OnShow", buttonFrame.Hide)
+			buttonFrame:Hide()
 			local minimizeButton = _G["ChatFrame"..i.."MinimizeButton"]
-			if minimizeButton then 
+			if minimizeButton then
 				minimizeButton:Hide()
 			end
 		end
 	else
 		for key, button in pairs(chatButtons) do
-			button:SetScript("OnShow", nil);
-			button:Show(); 
+			button:SetScript("OnShow", nil)
+			button:Show()
 		end
-		for i=1, NUM_CHAT_WINDOWS do 
-			local buttonFrame = _G["ChatFrame"..i.."ButtonFrame"];
-			buttonFrame:SetScript("OnShow", nil);
-			buttonFrame:Show();
+		for i=1, NUM_CHAT_WINDOWS do
+			local buttonFrame = _G["ChatFrame"..i.."ButtonFrame"]
+			buttonFrame:SetScript("OnShow", nil)
+			buttonFrame:Show()
 		end
 	end
 end
@@ -104,45 +104,45 @@ end
 function DownInFront:HideChatTabs(hideTabs)
 	-- FrameXML/FloatingChatFrame.lua
 	-- FrameXML/ChatFrame.xml
-	if ( hideTabs ) then 
-		CHAT_FRAME_TAB_SELECTED_NOMOUSE_ALPHA = 0;
-		CHAT_FRAME_TAB_ALERTING_NOMOUSE_ALPHA = 0;
-		CHAT_FRAME_TAB_NORMAL_NOMOUSE_ALPHA = 0;
-		for i=1, NUM_CHAT_WINDOWS do 
-			_G["ChatFrame"..i.."Tab"]:SetAlpha(0);
-			_G["ChatFrame"..i.."Tab"].noMouseAlpha = 0;
-			-- _G["ChatFrame"..i.."EditBoxFocusLeft"]:SetAlpha(0);
-			-- _G["ChatFrame"..i.."EditBoxFocusMid"]:SetAlpha(0);
-			-- _G["ChatFrame"..i.."EditBoxFocusRight"]:SetAlpha(0);
+	if hideTabs then
+		CHAT_FRAME_TAB_SELECTED_NOMOUSE_ALPHA = 0
+		CHAT_FRAME_TAB_ALERTING_NOMOUSE_ALPHA = 0
+		CHAT_FRAME_TAB_NORMAL_NOMOUSE_ALPHA = 0
+		for i=1, NUM_CHAT_WINDOWS do
+			_G["ChatFrame"..i.."Tab"]:SetAlpha(0)
+			_G["ChatFrame"..i.."Tab"].noMouseAlpha = 0
+			-- _G["ChatFrame"..i.."EditBoxFocusLeft"]:SetAlpha(0)
+			-- _G["ChatFrame"..i.."EditBoxFocusMid"]:SetAlpha(0)
+			-- _G["ChatFrame"..i.."EditBoxFocusRight"]:SetAlpha(0)
 			-- Commented out in Classic WoW code
-			_G["ChatFrame"..i.."EditBoxLeft"]:SetAlpha(0);
-			_G["ChatFrame"..i.."EditBoxMid"]:SetAlpha(0); 
-			_G["ChatFrame"..i.."EditBoxRight"]:SetAlpha(0); 
-			_G["ChatFrame"..i]:SetClampRectInsets(0, 0, 0, 0);
+			_G["ChatFrame"..i.."EditBoxLeft"]:SetAlpha(0)
+			_G["ChatFrame"..i.."EditBoxMid"]:SetAlpha(0)
+			_G["ChatFrame"..i.."EditBoxRight"]:SetAlpha(0)
+			_G["ChatFrame"..i]:SetClampRectInsets(0, 0, 0, 0)
 		end
 	else
-		-- Set back to defaults
-		CHAT_FRAME_TAB_SELECTED_NOMOUSE_ALPHA = 0.4;
-		CHAT_FRAME_TAB_ALERTING_NOMOUSE_ALPHA = 1;
-		CHAT_FRAME_TAB_NORMAL_NOMOUSE_ALPHA = 0.2;
+		-- Restoreto defaults
+		CHAT_FRAME_TAB_SELECTED_NOMOUSE_ALPHA = 0.4
+		CHAT_FRAME_TAB_ALERTING_NOMOUSE_ALPHA = 1
+		CHAT_FRAME_TAB_NORMAL_NOMOUSE_ALPHA = 0.2
 		for i=1, NUM_CHAT_WINDOWS do 
-			_G["ChatFrame"..i.."Tab"]:SetAlpha(0.2);
-			_G["ChatFrame"..i.."Tab"].noMouseAlpha = 0.2;
-			-- _G["ChatFrame"..i.."EditBoxFocusLeft"]:SetAlpha(1);
-			-- _G["ChatFrame"..i.."EditBoxFocusMid"]:SetAlpha(1);
-			-- _G["ChatFrame"..i.."EditBoxFocusRight"]:SetAlpha(1);
+			_G["ChatFrame"..i.."Tab"]:SetAlpha(0.2)
+			_G["ChatFrame"..i.."Tab"].noMouseAlpha = 0.2
+			-- _G["ChatFrame"..i.."EditBoxFocusLeft"]:SetAlpha(1)
+			-- _G["ChatFrame"..i.."EditBoxFocusMid"]:SetAlpha(1)
+			-- _G["ChatFrame"..i.."EditBoxFocusRight"]:SetAlpha(1)
 			-- Commented out in Classic WoW code
-			_G["ChatFrame"..i.."EditBoxLeft"]:SetAlpha(1);
-			_G["ChatFrame"..i.."EditBoxMid"]:SetAlpha(1); 
-			_G["ChatFrame"..i.."EditBoxRight"]:SetAlpha(1); 
-			_G["ChatFrame"..i]:SetClampRectInsets(-35, 35, 26, -50);
+			_G["ChatFrame"..i.."EditBoxLeft"]:SetAlpha(1)
+			_G["ChatFrame"..i.."EditBoxMid"]:SetAlpha(1)
+			_G["ChatFrame"..i.."EditBoxRight"]:SetAlpha(1)
+			_G["ChatFrame"..i]:SetClampRectInsets(-35, 35, 26, -50)
 		end
 	end
 end
 
 function DownInFront:HideGroupLoot(hideLoot)
 	if BossBanner then  -- Doesn't exist in Classic
-		if hideLoot then 
+		if hideLoot then
 			BossBanner:UnregisterEvent("ENCOUNTER_LOOT_RECEIVED")
 		else
 			BossBanner:RegisterEvent("ENCOUNTER_LOOT_RECEIVED")
@@ -151,17 +151,17 @@ function DownInFront:HideGroupLoot(hideLoot)
 end
 
 function DownInFront:HideMissionAlerts(hideAlerts)
-	if hideAlerts then 
-		AlertFrame:UnregisterEvent("GARRISON_MISSION_FINISHED");
+	if hideAlerts then
+		AlertFrame:UnregisterEvent("GARRISON_MISSION_FINISHED")
 	else
-		AlertFrame:RegisterEvent("GARRISON_MISSION_FINISHED");
+		AlertFrame:RegisterEvent("GARRISON_MISSION_FINISHED")
 	end
 end
 
 function DownInFront:HideOrderHallBar(hideBar)
 	local topBar = OrderHallCommandBar
-	if ( topBar ) then  -- Only exists if Blizzard_OrderHallUI is loaded
-		if ( hideBar ) then 
+	if topBar then  -- Only exists if Blizzard_OrderHallUI is loaded
+		if hideBar then
 			topBar:Hide()
 			topBar:SetScript("OnShow", topBar.Hide)
 			UIParent:UnregisterEvent("UNIT_AURA")
@@ -209,12 +209,12 @@ function DownInFront:SimplifyObjectiveHeader(header)
 end
 
 function DownInFront:RestoreObjectiveHeader(header)
-	local oldColor = NORMAL_FONT_COLOR
+	local oldTextColor = NORMAL_FONT_COLOR
 	header.Background:Show()
 	header.Text:ClearAllPoints()
 	header.Text:SetPoint("LEFT", -7, 0)
 	header.Text:SetJustifyH("LEFT")
-	header.Text:SetTextColor(oldColor.r, oldColor.g, oldColor.b)
+	header.Text:SetTextColor(oldTextColor.r, oldTextColor.g, oldTextColor.b)
 end
 
 
@@ -260,38 +260,38 @@ function DownInFront:HidePlayerNames()
 end
 
 function DownInFront:HidePlayerTitles(hideTitles)
-	if ( hideTitles ) then
-		SetCVar("UnitNamePlayerPVPTitle", 0);
+	if hideTitles then
+		SetCVar("UnitNamePlayerPVPTitle", 0)
 	else
-		SetCVar("UnitNamePlayerPVPTitle", 1);
+		SetCVar("UnitNamePlayerPVPTitle", 1)
 	end
 end
 
 function DownInFront:HidePlayerGuilds(hideGuilds)
-	if ( hideGuilds ) then 
-		SetCVar("UnitNameGuildTitle", 0);
-		SetCVar("UnitNamePlayerGuild", 0);
+	if hideGuilds then
+		SetCVar("UnitNameGuildTitle", 0)
+		SetCVar("UnitNamePlayerGuild", 0)
 	else
-		SetCVar("UnitNameGuildTitle", 1);
-		SetCVar("UnitNamePlayerGuild", 1);
+		SetCVar("UnitNameGuildTitle", 1)
+		SetCVar("UnitNamePlayerGuild", 1)
 	end
 end
 
 function DownInFront:HideCombatText(hideText)
-	if ( hideText ) then 
-		SetCVar("floatingCombatTextCombatHealing", 0);
-		SetCVar("floatingCombatTextCombatDamage", 0);
+	if hideText then
+		SetCVar("floatingCombatTextCombatHealing", 0)
+		SetCVar("floatingCombatTextCombatDamage", 0)
 	else
-		SetCVar("floatingCombatTextCombatHealing", 1);
-		SetCVar("floatingCombatTextCombatDamage", 1);
+		SetCVar("floatingCombatTextCombatHealing", 1)
+		SetCVar("floatingCombatTextCombatDamage", 1)
 	end
 end
 
 function DownInFront:HideThreatText(hideText)
-	if ( hideText ) then 
-		SetCVar("threatWorldText", 0);
-	else 
-		SetCVar("threatWorldText", 1);
+	if hideText then
+		SetCVar("threatWorldText", 0)
+	else
+		SetCVar("threatWorldText", 1)
 	end
 end
 
