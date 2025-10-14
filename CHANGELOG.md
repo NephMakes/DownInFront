@@ -1,7 +1,7 @@
 # Changelog
 ## DownInFront
 
-### v2.4 (2025-10-XX)
+### v2.4 (2025-10-14)
 * New option: Simplify Objective Tracker
 
 ### v2.3.5 (2025-10-10)
