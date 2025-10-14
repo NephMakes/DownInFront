@@ -2,7 +2,7 @@
 ## DownInFront
 
 ### v2.4 (2025-10-14)
-* New option: Simplify Objective Tracker
+* New option: Simplify objective tracker
 
 ### v2.3.5 (2025-10-10)
 * Updated for Retail patch 11.2.5
