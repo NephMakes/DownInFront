@@ -5,7 +5,7 @@ local EventFrame = CreateFrame("Frame", "DownInFrontFrame", UIParent)
 
 --[[ Base functions ]]--
 
-function EventFrame:OnEvent(event, ...) 
+function EventFrame:OnEvent(event, ...)
 	if event == "PLAYER_ENTERING_WORLD" then
 		DownInFront:Update()
 	elseif event == "VARIABLES_LOADED" then
