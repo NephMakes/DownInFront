@@ -46,7 +46,6 @@ function DownInFront:Update()
 	-- UI elements
 	self:HideChatButtons(options.HideChatButtons)
 	self:HideChatTabs(options.HideChatTabs)
-	self:SimplifyObjectiveTracker(options.SimplifyObjectiveTracker)
 
 	-- Game-world text
 	self:HidePlayerNamesInPVE(options.HidePlayerNamesInPVE)
@@ -56,10 +55,11 @@ function DownInFront:Update()
 	-- self:HideCombatText(options.HideCombatText)  -- Now in base UI
 
 	-- Retail-only features
-	if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then  -- Blizz globals in FrameXML/Constants.lua
+	if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
 		self:HideGroupLoot(options.HideGroupLoot)
 		self:HideMissionAlerts(options.HideMissionAlerts)
 		self:HideOrderHallBar(options.HideOrderHallBar)
+		self:SimplifyObjectiveTracker(options.SimplifyObjectiveTracker)
 	end
 end
 

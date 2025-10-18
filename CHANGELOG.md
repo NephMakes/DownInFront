@@ -1,6 +1,9 @@
 # Changelog
 ## DownInFront
 
+### v2.4.1 (2025-10-18)
+* Fixed lua error with Objective Tracker in Classic
+
 ### v2.4 (2025-10-14)
 * New option: Simplify objective tracker
 

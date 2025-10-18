@@ -1,6 +1,6 @@
 ## Interface: 110205, 50501, 11507
 ## Title: DownInFront
-## Version: 2.4
+## Version: 2.4.1
 ## Notes: Hides UI clutter
 ## Author: NephMakes
 ## SavedVariablesPerCharacter: DownInFrontOptions
